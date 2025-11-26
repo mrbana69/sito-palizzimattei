@@ -1,87 +1,560 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+/* Header */
 .header {
-    background-color: #007BFF; /* Blue for Mattei */
-    padding: 10px;
+    background-color: #007BFF;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .logo-ministero {
-    max-width: 100px;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
 }
 
-.main-content {
-    padding: 20px;
+.logo-spacer {
+    width: 32px;
+    min-width: 32px;
+    height: 1px;
+    display: inline-block;
 }
 
-.school-logo img {
-    max-width: 200px;
-    margin: 20px auto;
+@media (max-width: 1024px) {
+    .logo-spacer {
+        display: none;
+    }
 }
 
-.buttons-section {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+/* Logo Scuola Section */
+.school-logo-section {
+    background-color: white;
+    padding: 30px 20px;
     margin: 20px 0;
 }
 
-.button {
-    padding: 10px 20px;
-    border: 2px solid black;
-    text-decoration: none;
-    font-size: 16px;
+.logo-school {
+    max-width: 1200px;
+    width: 98%;
+    height: auto;
+    display: block;
+    margin: 32px auto 48px auto;
+}
+
+/* Main Content */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* School Section */
+.school-section {
+    margin: 40px 0;
+}
+
+.schools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 40px;
+}
+
+.school-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 36px 28px;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Discover box around the SCOPRI button */
+.discover-box {
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    background: rgba(255,255,255,0.92);
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Hide discover box on desktop until hover; on mobile keep it visible */
+.discover-box {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.32s cubic-bezier(.2,.9,.2,1), transform 0.32s cubic-bezier(.2,.9,.2,1);
+}
+
+@media (max-width: 1024px) {
+    .discover-box {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Discover-box button initial state: hidden and ready to animate (desktop will trigger it) */
+.discover-box .button {
+    opacity: 0;
+    transform: translateY(30px) scale(1);
+    transition: opacity 0.33s cubic-bezier(.2,.9,.2,1), transform 0.33s cubic-bezier(.2,.9,.2,1);
+}
+
+.school-photo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.school-background {
+    min-height: 420px;
+    padding: 64px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.school-background h2 {
+    font-size: 48px;
+    margin-bottom: 30px;
     font-weight: bold;
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* removed absolute positioning for .school-photo so images flow inside the card */
+
+/* Desktop: hover effect */
+@media (min-width: 1025px) {
+    .school-background {
+        background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        color: white;
+    }
+
+    /* On desktop keep the photo at full opacity until user hovers */
+    .school-photo {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    .school-background:hover .school-photo {
+        opacity: 0.2;
+    }
+
+    .school-card:hover .school-photo {
+        opacity: 0.2;
+    }
+
+    /* Make the whole discover box slide up and appear on hover (desktop only) */
+    .school-card:hover .discover-box {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Slight scale for the button itself when the box appears */
+    .school-card:hover .discover-box .button {
+        transform: scale(1.035);
+    }
+
+    /* Slightly lift the school title towards the button on hover */
+    .school-card h2 {
+        transition: transform 0.28s ease;
+    }
+
+    .school-card:hover h2 {
+        transform: translateY(-8px);
+    }
+
+    /* Improve readability on desktop: add a subtle dark background behind the title */
+    .school-card h2 {
+        background: rgba(0,0,0,0.35);
+        padding: 6px 10px;
+        border-radius: 6px;
+    }
+
+    .palizzi-bg {
+        background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        color: white;
+    }
+
+    .mattei-bg {
+        background: linear-gradient(135deg, #007BFF 0%, #0056CC 100%);
+        color: white;
+    }
+}
+
+/* Buttons */
+.button {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
-.button.palizzi {
-    background-color: #FF0000; /* Red for Palizzi */
-    color: white;
+.palizzi-button {
+    background-color: white;
+    color: #FF0000;
 }
 
-.button.mattei {
-    background-color: #007BFF; /* Blue for Mattei */
-    color: white;
+.palizzi-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
 
-.button.orientation {
+.mattei-button {
+    background-color: white;
+    color: #007BFF;
+}
+
+.mattei-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.big-orientation {
+    font-size: 22px;
+    padding: 18px 48px;
+    background: linear-gradient(90deg, #007BFF 60%, #FF0000 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    margin-top: 24px;
+    margin-bottom: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
+}
+
+.big-orientation:hover {
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    background: linear-gradient(90deg, #FF0000 60%, #007BFF 100%);
+}
+
+/* Footer */
+.footer {
     background-color: #333;
     color: white;
+    padding: 40px 20px;
+    margin-top: 60px;
 }
 
-.button:hover {
-    opacity: 0.8;
+.footer-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
 }
 
-.footer {
-    background-color: #f1f1f1;
-    padding: 10px;
+.footer-left,
+.footer-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo-ministero-footer {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+}
+
+.footer-center {
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.footer-center h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-center p {
+    margin: 8px 0;
     font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-left-text {
+    text-align: left;
+    flex: 1;
+    padding: 0 20px;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .buttons-section {
-        flex-direction: column;
-        gap: 10px;
+/* Tablet */
+@media (max-width: 1024px) {
+    .logo-ministero {
+        max-width: 260px;
+    }
+    .logo-school {
+        max-width: 700px;
+    }
+
+    .school-background {
+        min-height: 250px;
+        padding: 40px 20px;
+    }
+
+    .school-background h2 {
+        font-size: 40px;
+    }
+
+    .school-photo {
+        opacity: 0.4;
     }
 
     .button {
-        width: 80%;
+        position: relative;
+        z-index: 2;
+        opacity: 1;
+    }
+
+    /* Ensure discover-box and its button are visible on mobile/tablet */
+    .discover-box {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .discover-box .button {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .palizzi-bg {
+        background: linear-gradient(135deg, rgba(255, 0, 0, 0.6) 0%, rgba(204, 0, 0, 0.6) 100%);
+        color: white;
+    }
+
+    .mattei-bg {
+        background: linear-gradient(135deg, rgba(0, 123, 255, 0.6) 0%, rgba(0, 86, 204, 0.6) 100%);
+        color: white;
+    }
+
+    .button {
+        padding: 12px 35px;
+        font-size: 16px;
     }
 }
 
-@media (max-width: 480px) {
-    .school-logo img {
-        max-width: 150px;
+/* Small tablets and landscape phones */
+@media (max-width: 768px) {
+    .school-logo-section {
+        padding: 25px 15px;
+    }
+
+    .logo-ministero {
+        max-width: 250px;
+    }
+
+    .logo-school {
+        max-width: 450px;
+    }
+
+    .main-content {
+        padding: 30px 15px;
+    }
+
+    .school-section {
+        margin: 30px 0;
+    }
+
+    .school-background {
+        min-height: 220px;
+        padding: 40px 20px;
+    }
+
+    .school-background h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .school-photo {
+        opacity: 0.4;
     }
 
     .button {
+        padding: 12px 30px;
+        font-size: 15px;
+        position: relative;
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-center {
+        padding: 20px 0;
+    }
+
+    .logo-ministero-footer {
+        max-width: 80px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+
+    .logo-ministero {
+        max-width: 220px;
+    }
+
+    .school-logo-section {
+        padding: 20px 10px;
+        margin: 15px 0;
+    }
+
+    .logo-school {
+        max-width: 300px;
+    }
+
+    .main-content {
+        padding: 20px 10px;
+    }
+
+    .school-section {
+        margin: 20px 0;
+    }
+
+    .school-background {
+        min-height: 180px;
+        padding: 30px 15px;
+    }
+
+    .school-background h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .school-photo {
+        opacity: 0.4;
+    }
+
+    .button {
+        padding: 10px 25px;
         font-size: 14px;
+        position: relative;
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer-center h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .footer-center p {
+        font-size: 13px;
+    }
+
+    .logo-ministero-footer {
+        max-width: 70px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 320px) {
+    .logo-school {
+        max-width: 250px;
+    }
+
+    .school-background {
+        min-height: 150px;
+        padding: 20px 10px;
+    }
+
+    .school-background h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .school-photo {
+        opacity: 0.4;
+    }
+
+    .button {
+        padding: 8px 20px;
+        font-size: 13px;
+        position: relative;
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .footer-center h3 {
+        font-size: 18px;
+    }
+
+    .footer-center p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    .schools-row {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+    .school-card {
+        max-width: 95vw;
     }
 }

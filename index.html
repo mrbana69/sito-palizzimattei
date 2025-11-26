@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +8,48 @@
 </head>
 <body>
     <header class="header">
-        <img src="logo-ministero.png" alt="Logo Ministero" class="logo-ministero">
+        <img src="assets/logo-ministero.png" alt="Logo Ministero" class="logo-ministero">
     </header>
+
+    <section class="school-logo">
+        <img src="assets/IIS PalizziMattei Vasto.png" alt="Logo Scuola Unita" class="logo-school">
+    </section>
+
     <main class="main-content">
-        <section class="school-logo">
-            <img src="school-logo.png" alt="Logo Scuola Unita" class="logo-school">
-        </section>
-        <section class="buttons-section">
-            <a href="https://palizzi.edu.it" class="button palizzi">PALIZZI</a>
-            <a href="https://itivasto.it" class="button mattei">MATTEI</a>
+        <section class="schools-row">
+            <div class="school-card palizzi-bg">
+                <img src="assets/palizzi-photo.jpg" alt="Scuola Palizzi" class="school-photo">
+                <h2>PALIZZI</h2>
+                <div class="discover-box">
+                    <a href="https://palizzi.edu.it" class="button palizzi">SCOPRI</a>
+                </div>
+            </div>
+            <div class="school-card mattei-bg">
+                <img src="assets/mattei-photo.jpg" alt="Scuola Mattei" class="school-photo">
+                <h2>MATTEI</h2>
+                <div class="discover-box">
+                    <a href="https://itivasto.it" class="button mattei">SCOPRI</a>
+                </div>
+            </div>
         </section>
         <section class="orientation-section">
-            <button class="button orientation">ORIENTAMENTO</button>
+            <a href="#" class="button orientation big-orientation">ORIENTAMENTO 2025</a>
         </section>
     </main>
+
     <footer class="footer">
-        <p>Footer con contatti</p>
+        <div class="footer-content">
+            <div class="footer-left-text">
+                <h3>Contatti</h3>
+                <p><strong>Scuola Palizzi:</strong></p>
+                <p>Email: info@palizzi.edu.it</p>
+                <p>Telefono: +39 XXXX XXXXX</p>
+                <br>
+                <p><strong>Scuola Mattei:</strong></p>
+                <p>Email: info@mattei.it</p>
+                <p>Telefono: +39 XXXX XXXXX</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
