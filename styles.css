@@ -219,6 +219,65 @@ body {
         font-size: 2.5rem;
     }
 }
+/* -----------------------------
+   SOCIAL MEDIA ICONS
+------------------------------ */
+
+.social-media {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: middle;
+
+    /* icon color */
+    background-color: white;
+
+    /* mask settings */
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    transition: transform .3s ease, background-color .3s ease;
+}
+
+/* Hover animation */
+.icon:hover {
+    transform: scale(1.15);
+    background-color: #ffcc00; /* change icon color on hover */
+}
+
+/* SVG masks */
+.facebook {
+    mask-image: url("assets/facebook-svgrepo-com.svg");
+    -webkit-mask-image: url("assets/facebook-svgrepo-com.svg");
+}
+
+.instagram {
+    mask-image: url("assets/instagram-167-svgrepo-com.svg");
+    -webkit-mask-image: url("assets/instagram-167-svgrepo-com.svg");
+}
+
+.youtube {
+    mask-image: url("assets/youtube-168-svgrepo-com.svg");
+    -webkit-mask-image: url("assets/youtube-168-svgrepo-com.svg");
+}
+
+.tiktok {
+    mask-image: url("assets/tiktok-svgrepo-com.svg");
+    -webkit-mask-image: url("assets/tiktok-svgrepo-com.svg");
+}
+
+
 
 /* -----------------------------
    RESPONSIVE
